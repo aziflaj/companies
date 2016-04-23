@@ -34,6 +34,7 @@ public class HelloWorldAction extends ActionSupport {
     }
 
     public String execute() throws Exception {
+        System.out.println("Acting...");
         return SUCCESS;
     }
 }
