@@ -39,6 +39,12 @@
             </result>
         </action>
 
+        <action name="logout" class="com.aziflaj.companies.auth.LogoutAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
+        </action>
+
         <action name="companies" class="com.aziflaj.companies.CompaniesAction">
             <result name="success">/WEB-INF/jsp/companies.jsp</result>
             <result name="error">/WEB-INF/jsp/error.jsp</result>

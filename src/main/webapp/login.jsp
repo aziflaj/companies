@@ -10,12 +10,10 @@
         <div class="form-group">
             <label for="email">Email address</label>
             <s:textfield name="email" id="email" placeholder="Email" class="form-control"/>
-            <%--<input type="email" class="form-control" id="email" name="email" placeholder="Email">--%>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <s:password name="password" class="form-control" id="password" placeholder="Password"/>
-            <%--<input type="password" class="form-control" id="password" placeholder="Password">--%>
         </div>
         <div class="checkbox">
             <label>
