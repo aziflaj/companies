@@ -12,17 +12,11 @@
 </head>
 <body>
 
-<s:if test="#session.name != null">
-    Hello <s:property value="#session.name"/>
+<s:if test="#session.user != null">
+    Hello <s:property value="#session.user.email"/>
 </s:if>
-<s:else>
-    You are not logged in
-</s:else>
 
-<s:form action="helloWorld">
-    <s:textfield label="Username" name="name"/>
-    <s:textfield label="What is the date?" name="dateNow" />
-    <s:submit/>
-</s:form>
+<a href="#">Logout</a>
+
 </body>
 </html>
