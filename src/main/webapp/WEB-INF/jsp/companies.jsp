@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Companies</title>
 </head>
 <body>

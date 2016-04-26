@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbConnector {
     private static Connection connection;
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         if (connection == null) {
             String host = "jdbc:mysql://localhost:33060/companies_db?serverTimezone=UTC";
             String username = "masteruser";
@@ -16,7 +16,7 @@ public class DbConnector {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(host, username, password);
-            } catch (ClassNotFoundException | SQLException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
                 return null;
             }
