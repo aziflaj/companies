@@ -33,7 +33,9 @@ public class CompaniesAction extends ActionSupport {
                 Company c = new Company(rs.getLong("id"),
                         rs.getString("nipt"),
                         rs.getString("name"),
-                        rs.getString("address"));
+                        rs.getString("address"),
+                        rs.getString("email"),
+                        rs.getString("password"));
                 companies.add(c);
             }
             return SUCCESS;

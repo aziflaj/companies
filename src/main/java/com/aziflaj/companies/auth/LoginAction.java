@@ -1,34 +1,29 @@
 package com.aziflaj.companies.auth;
 
-import com.aziflaj.companies.db.model.User;
+import com.aziflaj.companies.db.DbConnector;
+import com.aziflaj.companies.db.model.Company;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.StrutsStatics;
 
-public class LoginAction extends ActionSupport implements StrutsStatics {
+import java.sql.SQLException;
+
+public class LoginAction extends ActionSupport {
     private String email;
     private String password;
 
     @Override
-    public String execute() {
-        User user = new User(email, password);
-        ServletActionContext.getRequest().getSession().setAttribute("user", user);
-        // TODO: see below
-        // get user from DB
-        // if Auth.passwordCheck(password, storedPassword)
-        // ---- login user
-        // ---- return SUCCESS
-        // else
-        // ---- redirect to index with flash message
-        // ---- return INPUT/ERROR
-        // ENDTODO
-
-
-//        String hashed = Auth.passwordHash(password);
-//        System.out.println("Original password: " + password);
-//        System.out.println("Hashed password: " + hashed);
-//        System.out.println("Valid password: " + Auth.passwordCheck(password, hashed));
-        return SUCCESS;
+    public String execute() throws SQLException {
+        Company company = Company.getByEmail(DbConnector.getConnection(), email);
+        if (company == null) {
+            return "require-login";
+        } else if (Auth.passwordCheck(password, company.getPassword())) {
+            ServletActionContext.getRequest().getSession().setAttribute("login", true);
+            ServletActionContext.getRequest().getSession().setAttribute("company", company);
+            return SUCCESS;
+        } else {
+            // TODO: add flash message
+            return "require-login";
+        }
     }
 
     public void setEmail(String email) {

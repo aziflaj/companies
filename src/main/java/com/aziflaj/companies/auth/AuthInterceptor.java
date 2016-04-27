@@ -19,13 +19,16 @@ public class AuthInterceptor extends AbstractInterceptor implements StrutsStatic
         HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
         HttpSession session = request.getSession();
         LOGGER.debug("Intercepting");
-        Object user = session.getAttribute("user");
-        if (user == null) {
+        Object loggedIn = session.getAttribute("login");
+        if (loggedIn == null) {
             LOGGER.debug("REQUIRE LOGIN");
             return "require-login";
-        } else {
+        } else if ((boolean) loggedIn) {
             LOGGER.debug("INVOKE");
             return actionInvocation.invoke();
+        } else {
+            // but why?
+            return "require-login";
         }
     }
 }

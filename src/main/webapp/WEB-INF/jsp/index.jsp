@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<s:if test="#session.user != null">
-    Hello <s:property value="#session.user.email"/>
+<s:if test="#session.company != null">
+    Hello <s:property value="#session.company.name"/>
 </s:if>
 
 <s:a action="logout">Logout</s:a>
