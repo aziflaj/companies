@@ -8,7 +8,7 @@ public class LogoutAction extends ActionSupport implements StrutsStatics {
 
     @Override
     public String execute() {
-        ServletActionContext.getRequest().getSession().setAttribute("user", null);
+        ServletActionContext.getRequest().getSession().invalidate();
         return SUCCESS;
     }
 }

@@ -13,6 +13,21 @@ public class LoginAction extends ActionSupport implements StrutsStatics {
     public String execute() {
         User user = new User(email, password);
         ServletActionContext.getRequest().getSession().setAttribute("user", user);
+        // TODO: see below
+        // get user from DB
+        // if Auth.passwordCheck(password, storedPassword)
+        // ---- login user
+        // ---- return SUCCESS
+        // else
+        // ---- redirect to index with flash message
+        // ---- return INPUT/ERROR
+        // ENDTODO
+
+
+//        String hashed = Auth.passwordHash(password);
+//        System.out.println("Original password: " + password);
+//        System.out.println("Hashed password: " + hashed);
+//        System.out.println("Valid password: " + Auth.passwordCheck(password, hashed));
         return SUCCESS;
     }
 
