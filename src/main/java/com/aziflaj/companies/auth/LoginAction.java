@@ -1,8 +1,10 @@
 package com.aziflaj.companies.auth;
 
+import com.aziflaj.companies.Validator;
 import com.aziflaj.companies.db.DbConnector;
 import com.aziflaj.companies.db.model.Company;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import java.sql.SQLException;
@@ -23,6 +25,21 @@ public class LoginAction extends ActionSupport {
         } else {
             // TODO: add flash message
             return "require-login";
+        }
+    }
+
+    @Override
+    public void validate() {
+        if (email == null || StringUtils.isBlank(email)) {
+            addFieldError("email", "Email is required");
+        }
+
+        if (!Validator.validEmail(email)) {
+            addFieldError("email", "Use a valid email address");
+        }
+
+        if (password == null || StringUtils.isBlank(password)) {
+            addFieldError("password", "Password is required");
         }
     }
 
