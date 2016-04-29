@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DbConnector {
     private static final String DATABASE_PROPERTIES_FILE = "database.properties";
-    private static final String DB_HOST_FORMAT = "jdbc:mysql://localhost:33060/%s?serverTimezone=UTC";
+    private static final String DB_HOST_FORMAT = "jdbc:mysql://%s:%s/%s?serverTimezone=UTC";
 
     private static Connection connection;
 
@@ -28,8 +28,10 @@ public class DbConnector {
                     dbProperties.load(new FileReader(resourceUrl.getFile()));
                     String username = dbProperties.getProperty("username");
                     String password = dbProperties.getProperty("password");
-                    String host = dbProperties.getProperty("database_name");
-                    host = String.format(DB_HOST_FORMAT, host);
+                    String host = String.format(DB_HOST_FORMAT,
+                            dbProperties.getProperty("database_host"),
+                            dbProperties.getProperty("database_port"),
+                            dbProperties.getProperty("database_name"));
 
                     connection = DriverManager.getConnection(host, username, password);
                 }

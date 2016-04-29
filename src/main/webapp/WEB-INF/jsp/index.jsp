@@ -7,11 +7,7 @@
 </head>
 <body>
 
-<s:if test="#session.company != null">
-    Hello <s:property value="#session.company.name"/>
-</s:if>
-
-<s:a action="logout">Logout</s:a>
+Hello <s:property value="#session.company.name"/>
 
 </body>
 </html>
