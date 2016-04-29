@@ -35,6 +35,9 @@
 
         <s:if test="#session.login">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><s:a action="departments">Departments</s:a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><s:a action="logout">Logout</s:a></li>
                 </ul>

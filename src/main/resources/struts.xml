@@ -50,5 +50,9 @@
             <result name="success">/WEB-INF/jsp/companies.jsp</result>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </action>
+
+        <action name="departments" class="com.aziflaj.companies.action.DepartmentsAction">
+            <result name="success">/WEB-INF/jsp/departments.jsp</result>
+        </action>
     </package>
 </struts>
