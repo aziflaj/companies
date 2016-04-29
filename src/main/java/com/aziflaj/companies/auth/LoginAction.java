@@ -1,8 +1,8 @@
 package com.aziflaj.companies.auth;
 
 import com.aziflaj.companies.Validator;
-import com.aziflaj.companies.db.DbConnector;
-import com.aziflaj.companies.db.model.Company;
+import com.aziflaj.companies.data.DbConnector;
+import com.aziflaj.companies.data.model.Company;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;

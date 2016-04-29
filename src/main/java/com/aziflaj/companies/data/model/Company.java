@@ -1,4 +1,4 @@
-package com.aziflaj.companies.db.model;
+package com.aziflaj.companies.data.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
