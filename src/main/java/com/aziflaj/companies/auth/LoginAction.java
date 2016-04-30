@@ -1,7 +1,7 @@
 package com.aziflaj.companies.auth;
 
 import com.aziflaj.companies.Validator;
-import com.aziflaj.companies.data.DbConnector;
+import com.aziflaj.companies.data.dao.CompanyDao;
 import com.aziflaj.companies.data.model.Company;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang3.StringUtils;
@@ -15,7 +15,9 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws SQLException {
-        Company company = Company.getByEmail(DbConnector.getConnection(), email);
+        CompanyDao companyDao = new CompanyDao();
+
+        Company company = companyDao.getByEmail(email);
         if (company == null) {
             return "require-login";
         } else if (Auth.passwordCheck(password, company.getPassword())) {
