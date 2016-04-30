@@ -6,6 +6,7 @@ import com.aziflaj.companies.data.model.Department;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,25 @@ public class DepartmentDao extends BaseDao<Department> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Department insert(Department department) throws SQLException {
+        String query = "INSERT INTO departments (name, company_id) " +
+                "VALUES (?, ?);";
+        PreparedStatement statement = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, department.getName());
+        statement.setLong(2, department.getCompany().getId());
+
+        if (statement.executeUpdate() == 1) {
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.first()) {
+                long id = rs.getLong(1);
+                department.setId(id);
+                return department;
+            }
+        }
+        return null;
     }
 
     @Override

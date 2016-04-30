@@ -5,6 +5,7 @@ import com.aziflaj.companies.data.model.Company;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,28 @@ public class CompanyDao extends BaseDao<Company> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Company insert(Company company) throws SQLException {
+        String query = "INSERT INTO companies (nipt, name, email, password, address) " +
+                "VALUES (?, ?, ?, ?, ?);";
+        PreparedStatement statement = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, company.getNipt());
+        statement.setString(2, company.getName());
+        statement.setString(3, company.getEmail());
+        statement.setString(4, company.getPassword());
+        statement.setString(5, company.getAddress());
+
+        if (statement.executeUpdate() == 1) {
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.first()) {
+                long id = rs.getLong(1);
+                company.setId(id);
+                return company;
+            }
+        }
+        return null;
     }
 
     @Override
