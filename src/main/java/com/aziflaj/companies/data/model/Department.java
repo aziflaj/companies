@@ -1,4 +1,4 @@
-package com.aziflaj.companies.db.model;
+package com.aziflaj.companies.data.model;
 
 public class Department {
     private long id;

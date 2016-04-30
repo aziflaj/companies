@@ -1,7 +1,7 @@
 package com.aziflaj.companies;
 
-import com.aziflaj.companies.db.DbConnector;
-import com.aziflaj.companies.db.model.Company;
+import com.aziflaj.companies.data.DbConnector;
+import com.aziflaj.companies.data.model.Company;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

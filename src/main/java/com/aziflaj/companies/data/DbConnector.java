@@ -1,4 +1,4 @@
-package com.aziflaj.companies.db;
+package com.aziflaj.companies.data;
 
 import java.io.FileReader;
 import java.io.IOException;
