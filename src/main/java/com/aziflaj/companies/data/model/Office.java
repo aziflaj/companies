@@ -1,11 +1,5 @@
 package com.aziflaj.companies.data.model;
 
-import com.aziflaj.companies.data.DbConnector;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class Office {
     private long id; //autoincrement
     private int tables;
@@ -29,6 +23,14 @@ public class Office {
         this.books = books;
         this.pencils = pencils;
         this.pens = pens;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getTables() {
@@ -93,33 +95,5 @@ public class Office {
 
     public void setPens(int pens) {
         this.pens = pens;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public static Office getById(DbConnector connector, long id) throws SQLException {
-        String selectQuery = "SELECT tables, pc_count, laptops, chairs, windows, books, pencils, pens "
-                + "FROM companies_db.offices "
-                + "WHERE id = ?;";
-
-        PreparedStatement stmt = connector.getConnection().prepareStatement(selectQuery);
-        stmt.setLong(1, id);
-
-        ResultSet rs = stmt.executeQuery();
-        if (rs.first()) {
-            return new Office(id,
-                    rs.getInt("tables"),
-                    rs.getInt("pc_count"),
-                    rs.getInt("laptops"),
-                    rs.getInt("chairs"),
-                    rs.getInt("windows"),
-                    rs.getInt("books"),
-                    rs.getInt("pencils"),
-                    rs.getInt("pens"));
-        } else {
-            return null;
-        }
     }
 }

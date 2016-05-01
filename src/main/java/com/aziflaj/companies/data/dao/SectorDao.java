@@ -12,9 +12,12 @@ import java.util.List;
 
 public class SectorDao extends BaseDao<Sector> {
     private DepartmentDao departmentDao;
+    private OfficeDao officeDao;
 
     public SectorDao() throws SQLException {
+        super();
         departmentDao = new DepartmentDao();
+        officeDao = new OfficeDao();
     }
 
     @Override
@@ -27,7 +30,7 @@ public class SectorDao extends BaseDao<Sector> {
         while (rs.next()) {
             sectors.add(new Sector(rs.getLong("id"),
                     rs.getString("name"),
-                    null, // TODO: replace null by OfficeDao#getById
+                    officeDao.getById(rs.getLong("office_id")),
                     departmentDao.getById(rs.getLong("department_id"))));
         }
         return sectors;
@@ -43,7 +46,7 @@ public class SectorDao extends BaseDao<Sector> {
         if (rs.first()) {
             return new Sector(id,
                     rs.getString("name"),
-                    null, // TODO: replace null by OfficeDao#getById
+                    officeDao.getById(rs.getLong("office_id")),
                     departmentDao.getById(rs.getLong("company_id")));
         } else {
             return null;
@@ -107,7 +110,7 @@ public class SectorDao extends BaseDao<Sector> {
         while (rs.next()) {
             sectors.add(new Sector(rs.getLong("id"),
                     rs.getString("name"),
-                    null, // TODO: replace null by OfficeDao#getById
+                    officeDao.getById(rs.getLong("office_id")),
                     department));
         }
         return sectors;
