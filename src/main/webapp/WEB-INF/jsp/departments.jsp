@@ -7,9 +7,16 @@
 <body>
 List of departments:
 <div class="companies-list">
-    <s:iterator value="departments" var="department">
-        <s:property value="#department.name"/>
-    </s:iterator>
+    <ul>
+        <s:iterator value="departments" var="department">
+            <li>
+                <s:a action="sectors">
+                    <s:param name="departmentId" value="%{#department.id}"/>
+                    <s:property value="#department.name"/>
+                </s:a>
+            </li>
+        </s:iterator>
+    </ul>
 </div>
 
 </body>

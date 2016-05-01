@@ -54,5 +54,13 @@
         <action name="departments" class="com.aziflaj.companies.action.DepartmentsAction">
             <result name="success">/WEB-INF/jsp/departments.jsp</result>
         </action>
+
+        <action name="sectors" class="com.aziflaj.companies.action.SectorAction">
+            <result name="success">/WEB-INF/jsp/sectors.jsp</result>
+        </action>
+
+        <action name="/sector/create" class="com.aziflaj.companies.action.CreateSectorAction">
+            <result name="success">/WEB-INF/jsp/create-sector.jsp</result>
+        </action>
     </package>
 </struts>

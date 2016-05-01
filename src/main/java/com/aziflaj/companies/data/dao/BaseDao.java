@@ -70,4 +70,6 @@ public abstract class BaseDao<T> {
      * @throws SQLException
      */
     public abstract boolean delete(T object) throws SQLException;
+
+    // public abstract List<T> findBy(String column, Object value);
 }

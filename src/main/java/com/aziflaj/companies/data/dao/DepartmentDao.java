@@ -42,7 +42,7 @@ public class DepartmentDao extends BaseDao<Department> {
         ResultSet rs = statement.executeQuery();
 
         if (rs.first()) {
-            return new Department(rs.getLong("id"),
+            return new Department(id,
                     rs.getString("name"),
                     companyDao.getById(rs.getLong("company_id")));
         } else {
