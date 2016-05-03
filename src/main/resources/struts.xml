@@ -5,6 +5,8 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.action.extension" value=""/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
 
     <package name="crud" extends="struts-default">
         <interceptors>
@@ -61,6 +63,12 @@
 
         <action name="/sector/create" class="com.aziflaj.companies.action.CreateSectorAction">
             <result name="success">/WEB-INF/jsp/create-sector.jsp</result>
+        </action>
+
+        <action name="*">
+            <result type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
         </action>
     </package>
 </struts>
