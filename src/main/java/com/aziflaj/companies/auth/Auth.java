@@ -16,7 +16,7 @@ import java.util.Base64;
  */
 public final class Auth {
     public static final int SALT_LENGTH = 50;
-    public static final int REMEMBER_TOKEN_LENGTH = 50;
+    public static final int REMEMBER_TOKEN_LENGTH = 15;
     public static final int ITERATIONS = 20 * 1000;
     public static final int KEY_LENGTH = 256;
 

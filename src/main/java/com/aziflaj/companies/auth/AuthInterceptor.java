@@ -1,5 +1,8 @@
 package com.aziflaj.companies.auth;
 
+import com.aziflaj.companies.Utils;
+import com.aziflaj.companies.data.dao.CompanyDao;
+import com.aziflaj.companies.data.model.Company;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
@@ -9,7 +12,6 @@ import org.apache.struts2.StrutsStatics;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AuthInterceptor extends AbstractInterceptor implements StrutsStatics {
@@ -23,25 +25,31 @@ public class AuthInterceptor extends AbstractInterceptor implements StrutsStatic
         Cookie[] cookies = request.getCookies();
 
         LOGGER.debug("Intercepting");
-
-        for (Cookie c : cookies) {
-            if (c.getName().equals("series_identifier")) {
-                System.out.println("series_identifier: " + c.getValue());
-            } else if (c.getName().equals("remember_token")) {
-                System.out.println("remember_token: " + c.getValue());
-            }
-        }
-
         Object loggedIn = session.getAttribute("login");
-        if (loggedIn == null) {
-            LOGGER.debug("REQUIRE LOGIN");
-            return "require-login";
-        } else if ((boolean) loggedIn) {
+        if (loggedIn != null && (boolean) loggedIn) {
             LOGGER.debug("INVOKE");
             return actionInvocation.invoke();
-        } else {
-            // but why?
-            return "require-login";
         }
+
+        Cookie seriesIdentifier = Utils.getCookieByName(cookies, "series_identifier");
+
+        if (seriesIdentifier != null) {
+            CompanyDao dao = new CompanyDao();
+            String storedToken = dao.getRememberTokenById(
+                    Long.valueOf(seriesIdentifier.getValue()));
+
+            Cookie rememberToken = Utils.getCookieByName(cookies, "remember_token");
+            if (rememberToken != null && Auth.passwordCheck(rememberToken.getValue(), storedToken)) {
+                System.out.println("YYEEEEAAAAHHHH!");
+                Company company = dao.getByToken(storedToken);
+                System.out.println(company.getName());
+                session.setAttribute("login", true);
+                session.setAttribute("company", company);
+                return actionInvocation.invoke();
+            } else {
+                System.out.println("aldo e ke dhi");
+            }
+        }
+        return "require-login";
     }
 }

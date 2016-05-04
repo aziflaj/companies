@@ -16,7 +16,6 @@ public class LogoutAction extends ActionSupport {
             if (c.getName().equals("series_identifier") || c.getName().equals("remember_token")) {
                 c.setMaxAge(0);
                 response.addCookie(c);
-                System.out.println("deleted");
             }
         }
         ServletActionContext.getRequest().getSession().invalidate();

@@ -129,4 +129,35 @@ public class CompanyDao extends BaseDao<Company> {
 
         return stmt.executeUpdate() == 1;
     }
+
+    public String getRememberTokenById(long id) throws SQLException {
+        String query = "SELECT remember_digest FROM companies WHERE id = ?;";
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.first()) {
+            return rs.getString("remember_digest");
+        } else {
+            return "";
+        }
+    }
+
+    public Company getByToken(String token) throws SQLException {
+        String query = "SELECT id, nipt, name, email, password, address FROM companies WHERE remember_digest = ?;";
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setString(1, token);
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.first()) {
+            return new Company(rs.getLong("id"),
+                    rs.getString("nipt"),
+                    rs.getString("name"),
+                    rs.getString("address"),
+                    rs.getString("email"),
+                    rs.getString("password"));
+        } else {
+            return null;
+        }
+    }
 }
