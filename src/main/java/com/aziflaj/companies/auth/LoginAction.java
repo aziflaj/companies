@@ -7,11 +7,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.Cookie;
 import java.sql.SQLException;
 
 public class LoginAction extends ActionSupport {
     private String email;
     private String password;
+    private boolean remember;
 
     @Override
     public String execute() throws SQLException {
@@ -23,6 +25,14 @@ public class LoginAction extends ActionSupport {
         } else if (Auth.passwordCheck(password, company.getPassword())) {
             ServletActionContext.getRequest().getSession().setAttribute("login", true);
             ServletActionContext.getRequest().getSession().setAttribute("company", company);
+
+            if (remember) {
+                // TODO: create cookie
+                Cookie seriesIdentifier = new Cookie("series_identifier", "the identifier");
+                Cookie rememberToken = new Cookie("remember_token", "the token");
+                ServletActionContext.getResponse().addCookie(seriesIdentifier);
+                ServletActionContext.getResponse().addCookie(rememberToken);
+            }
             return SUCCESS;
         } else {
             // TODO: add flash message
@@ -51,5 +61,9 @@ public class LoginAction extends ActionSupport {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRemember(boolean remember) {
+        this.remember = remember;
     }
 }
