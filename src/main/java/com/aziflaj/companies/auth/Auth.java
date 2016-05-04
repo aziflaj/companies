@@ -16,6 +16,7 @@ import java.util.Base64;
  */
 public final class Auth {
     public static final int SALT_LENGTH = 50;
+    public static final int REMEMBER_TOKEN_LENGTH = 50;
     public static final int ITERATIONS = 20 * 1000;
     public static final int KEY_LENGTH = 256;
 
@@ -66,6 +67,16 @@ public final class Auth {
 
             return Base64.getEncoder().encodeToString(key.getEncoded());
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String generateRememberToken() {
+        try {
+            byte[] salt = SecureRandom.getInstance("SHA1PRNG").generateSeed(REMEMBER_TOKEN_LENGTH);
+            return Base64.getEncoder().encodeToString(salt);
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return "";

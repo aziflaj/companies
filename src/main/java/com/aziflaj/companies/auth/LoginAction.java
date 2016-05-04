@@ -27,11 +27,20 @@ public class LoginAction extends ActionSupport {
             ServletActionContext.getRequest().getSession().setAttribute("company", company);
 
             if (remember) {
-                // TODO: create cookie
-                Cookie seriesIdentifier = new Cookie("series_identifier", "the identifier");
-                Cookie rememberToken = new Cookie("remember_token", "the token");
+                // TODO: store token in the DB
+                String token = Auth.generateRememberToken();
+
+                Cookie seriesIdentifier = new Cookie("series_identifier",
+                        String.valueOf(company.getId()));
+                seriesIdentifier.setMaxAge(60 * 60 * 24 * 365 * 20);
+                // seriesIdentifier.setSecure(true); // TODO: uncomment after using HTTPS
+
+                Cookie rememberToken = new Cookie("remember_token", token);
+                rememberToken.setMaxAge(60 * 60 * 24 * 365 * 20); // expire after 20 years
+
                 ServletActionContext.getResponse().addCookie(seriesIdentifier);
                 ServletActionContext.getResponse().addCookie(rememberToken);
+                companyDao.setRememberToken(company, token);
             }
             return SUCCESS;
         } else {

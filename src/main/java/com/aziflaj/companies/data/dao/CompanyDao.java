@@ -118,4 +118,15 @@ public class CompanyDao extends BaseDao<Company> {
             return null;
         }
     }
+
+    public boolean setRememberToken(Company company, String token) throws SQLException {
+        String selectQuery = "UPDATE companies " +
+                "SET remember_digest = ?" +
+                "WHERE id = ?;";
+        PreparedStatement stmt = getConnection().prepareStatement(selectQuery);
+        stmt.setString(1, token);
+        stmt.setLong(2, company.getId());
+
+        return stmt.executeUpdate() == 1;
+    }
 }
