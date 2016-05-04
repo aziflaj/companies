@@ -72,8 +72,8 @@
     </welcome-file-list>
 
     <!-- Error page handling -->
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/errors/404.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/WEB-INF/errors/404.jsp</location>-->
+    <!--</error-page>-->
 </web-app>

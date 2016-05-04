@@ -5,7 +5,7 @@
     <title>Sectors</title>
 </head>
 <body>
-<button>Add new sector</button>
+<s:a action="sector-create-form" class="btn btn-success">Add new Sector</s:a>
 <ul>
     <s:iterator value="sectors" var="s">
         <li><s:property value="#s.name"/></li>

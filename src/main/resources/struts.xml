@@ -4,8 +4,9 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <constant name="struts.devMode" value="true"/>
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-    <constant name="struts.action.extension" value=""/>
+    <!--<constant name="struts.action.extension" value=""/>-->
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
 
     <package name="crud" extends="struts-default">
@@ -61,8 +62,15 @@
             <result name="success">/WEB-INF/jsp/sectors.jsp</result>
         </action>
 
-        <action name="/sector/create" class="com.aziflaj.companies.action.CreateSectorAction">
+        <action name="sector-create-form" class="com.aziflaj.companies.action.AddSectorFormAction">
             <result name="success">/WEB-INF/jsp/create-sector.jsp</result>
+        </action>
+
+        <action name="sector-create" class="com.aziflaj.companies.action.CreateNewSectorAction">
+            <result name="success">OK</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">sector-create-form</param>
+            </result>
         </action>
 
         <action name="*">
