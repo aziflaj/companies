@@ -67,15 +67,29 @@
         </action>
 
         <!--<action name="sector-create" class="com.aziflaj.companies.action.sector.CreateNewSectorAction">-->
-            <!--<result name="success">OK</result>-->
-            <!--<result name="input" type="redirectAction">-->
-                <!--<param name="actionName">sector-create-form</param>-->
-            <!--</result>-->
+        <!--<result name="success">OK</result>-->
+        <!--<result name="input" type="redirectAction">-->
+        <!--<param name="actionName">sector-create-form</param>-->
+        <!--</result>-->
         <!--</action>-->
 
         <action name="all-employees" class="com.aziflaj.companies.action.employee.AllEmployeesAction">
             <result name="success">/WEB-INF/jsp/employees/all.jsp</result>
         </action>
+
+        <action name="create-employee-form" class="com.aziflaj.companies.action.employee.CreateEmployeeFormAction">
+            <result name="success">/WEB-INF/jsp/employees/create.jsp</result>
+        </action>
+
+        <action name="create-employee" class="com.aziflaj.companies.action.employee.CreateEmployeeAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">all-employees</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">create-employee-form</param>
+            </result>
+        </action>
+
 
         <action name="*">
             <result type="redirectAction">

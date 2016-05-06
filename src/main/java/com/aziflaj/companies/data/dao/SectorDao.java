@@ -1,5 +1,6 @@
 package com.aziflaj.companies.data.dao;
 
+import com.aziflaj.companies.data.model.Company;
 import com.aziflaj.companies.data.model.Department;
 import com.aziflaj.companies.data.model.Sector;
 
@@ -113,6 +114,28 @@ public class SectorDao extends BaseDao<Sector> {
                     officeDao.getById(rs.getLong("office_id")),
                     department));
         }
+        return sectors;
+    }
+
+    public List<Sector> getByCompany(Company company) throws SQLException {
+        List<Sector> sectors = new ArrayList<>();
+        String query = "SELECT s.* " +
+                "FROM sectors AS s " +
+                "JOIN departments AS d ON d.id = s.department_id " +
+                "JOIN companies AS c ON c.id = d.company_id " +
+                "WHERE c.id = ?;";
+
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setLong(1, company.getId());
+
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            sectors.add(new Sector(rs.getLong("id"),
+                    rs.getString("name"),
+                    officeDao.getById(rs.getLong("office_id")),
+                    departmentDao.getById(rs.getLong("department_id"))));
+        }
+
         return sectors;
     }
 }
