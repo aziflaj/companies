@@ -1,5 +1,6 @@
 package com.aziflaj.companies.data.dao;
 
+import com.aziflaj.companies.data.model.Company;
 import com.aziflaj.companies.data.model.Employee;
 
 import java.sql.PreparedStatement;
@@ -109,5 +110,37 @@ public class EmployeeDao extends BaseDao<Employee> {
         statement.setLong(1, employee.getId());
 
         return statement.executeUpdate() == 1;
+    }
+
+    /**
+     * Get all the employees of a single company
+     *
+     * @param company The company where the employees are working
+     * @return a List of all the employees working on the company
+     * @throws SQLException
+     */
+    public List<Employee> getByCompany(Company company) throws SQLException {
+        List<Employee> employees = new ArrayList<>();
+        String query = "SELECT e.* " +
+                "FROM employees AS e " +
+                "JOIN sectors AS s ON s.id = e.sector_id " +
+                "JOIN departments AS d ON d.id = s.department_id " +
+                "JOIN companies AS c ON c.id = d.company_id " +
+                "WHERE c.id = ?";
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setLong(1, company.getId());
+        ResultSet rs = statement.executeQuery();
+
+        while (rs.next()) {
+            employees.add(new Employee(rs.getLong("id"),
+                    rs.getString("full_name"),
+                    rs.getString("ssn"),
+                    rs.getString("email"),
+                    rs.getDate("dob"),
+                    roleDao.getById(rs.getLong("role_id")),
+                    sectorDao.getById(rs.getLong("sector_id"))));
+        }
+
+        return employees;
     }
 }

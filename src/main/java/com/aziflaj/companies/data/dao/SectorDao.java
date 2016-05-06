@@ -47,7 +47,7 @@ public class SectorDao extends BaseDao<Sector> {
             return new Sector(id,
                     rs.getString("name"),
                     officeDao.getById(rs.getLong("office_id")),
-                    departmentDao.getById(rs.getLong("company_id")));
+                    departmentDao.getById(rs.getLong("department_id")));
         } else {
             return null;
         }

@@ -1,4 +1,4 @@
-package com.aziflaj.companies.action;
+package com.aziflaj.companies.action.sector;
 
 import com.aziflaj.companies.data.model.Role;
 import com.opensymphony.xwork2.ActionSupport;

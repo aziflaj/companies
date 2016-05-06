@@ -6,7 +6,7 @@
 </head>
 <body>
 List of departments:
-<div class="companies-list">
+<div class="departments-list">
     <ul>
         <s:iterator value="departments" var="department">
             <li>
