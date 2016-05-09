@@ -1,4 +1,4 @@
-package com.aziflaj.companies.action;
+package com.aziflaj.companies.action.sector;
 
 import com.aziflaj.companies.data.dao.DepartmentDao;
 import com.aziflaj.companies.data.dao.SectorDao;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SectorAction extends ActionSupport implements StrutsStatics {
+public class AllSectorsAction extends ActionSupport implements StrutsStatics {
     private Long departmentId;
     private List<Sector> sectors;
 

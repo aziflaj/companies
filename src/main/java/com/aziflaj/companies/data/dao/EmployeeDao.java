@@ -2,6 +2,7 @@ package com.aziflaj.companies.data.dao;
 
 import com.aziflaj.companies.data.model.Company;
 import com.aziflaj.companies.data.model.Employee;
+import com.aziflaj.companies.data.model.Role;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

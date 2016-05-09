@@ -58,20 +58,22 @@
             <result name="success">/WEB-INF/jsp/departments.jsp</result>
         </action>
 
-        <action name="sectors" class="com.aziflaj.companies.action.SectorAction">
-            <result name="success">/WEB-INF/jsp/sectors.jsp</result>
+        <action name="all-sectors" class="com.aziflaj.companies.action.sector.AllSectorsAction">
+            <result name="success">/WEB-INF/jsp/sectors/all.jsp</result>
         </action>
 
-        <action name="sector-create-form" class="com.aziflaj.companies.action.sector.AddSectorFormAction">
-            <result name="success">/WEB-INF/jsp/create-sector.jsp</result>
+        <action name="sector-create-form" class="com.aziflaj.companies.action.sector.CreateSectorFormAction">
+            <result name="success">/WEB-INF/jsp/sectors/create.jsp</result>
         </action>
 
-        <!--<action name="sector-create" class="com.aziflaj.companies.action.sector.CreateNewSectorAction">-->
-        <!--<result name="success">OK</result>-->
-        <!--<result name="input" type="redirectAction">-->
-        <!--<param name="actionName">sector-create-form</param>-->
-        <!--</result>-->
-        <!--</action>-->
+        <action name="sector-create" class="com.aziflaj.companies.action.sector.CreateSectorAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">departments</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">4444</param>
+            </result>
+        </action>
 
         <action name="all-employees" class="com.aziflaj.companies.action.employee.AllEmployeesAction">
             <result name="success">/WEB-INF/jsp/employees/all.jsp</result>

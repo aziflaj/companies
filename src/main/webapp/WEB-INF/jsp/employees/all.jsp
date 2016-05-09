@@ -13,10 +13,10 @@ List of employees
             <s:property value="#e.fullName"/> working as <s:property value="#e.role.name"/> on <s:property
                 value="#e.sector.name"/>
 
-            <s:a action="edit-employee" class="btn btn-success">
-                <s:param name="employeeId" value="%{#e.id}"/>
-                Update
-            </s:a>
+            <%--<s:a action="edit-employee" class="btn btn-success">--%>
+                <%--<s:param name="employeeId" value="%{#e.id}"/>--%>
+                <%--Update--%>
+            <%--</s:a>--%>
 
             <s:a action="delete-employee" class="btn btn-danger">
                 <s:param name="employeeId" value="%{#e.id}"/>

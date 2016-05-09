@@ -10,7 +10,7 @@ List of departments:
     <ul>
         <s:iterator value="departments" var="department">
             <li>
-                <s:a action="sectors">
+                <s:a action="all-sectors">
                     <s:param name="departmentId" value="%{#department.id}"/>
                     <s:property value="#department.name"/>
                 </s:a>

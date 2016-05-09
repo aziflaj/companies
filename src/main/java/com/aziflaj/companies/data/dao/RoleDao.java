@@ -87,4 +87,19 @@ public class RoleDao extends BaseDao<Role> {
 
         return statement.executeUpdate() == 1;
     }
+
+    public Role getByName(String name) throws SQLException {
+        String query = "SELECT id, salary_id FROM roles WHERE name = ?;";
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setString(1, name);
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.first()) {
+            return new Role(rs.getLong("id"),
+                    name,
+                    salaryDao.getById(rs.getLong("salary_id")));
+        } else {
+            return null;
+        }
+    }
 }
