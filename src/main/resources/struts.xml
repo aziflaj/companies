@@ -90,6 +90,12 @@
             </result>
         </action>
 
+        <action name="delete-employee" class="com.aziflaj.companies.action.employee.DeleteEmployeeAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">all-employees</param>
+            </result>
+        </action>
+
 
         <action name="*">
             <result type="redirectAction">
