@@ -7,9 +7,9 @@
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.convention.default.parent.package" value="root"/>
     <!--<constant name="struts.enable.DynamicMethodInvocation" value="false"/>-->
-    <!--<constant name="struts.enable.SlashesInActionNames" value="true"/>-->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
 
-    <package name="root" namespace="/" extends="struts-default">
+    <package name="root" extends="struts-default">
         <interceptors>
             <interceptor name="auth-interceptor"
                          class="com.aziflaj.companies.auth.AuthInterceptor"/>
@@ -22,7 +22,7 @@
 
         <default-interceptor-ref name="loginStack"/>
 
-        <default-action-ref name="index"/>
+        <default-action-ref name="/"/>
 
         <global-results>
             <result name="require-login" type="redirectAction">
@@ -30,13 +30,8 @@
             </result>
         </global-results>
 
-        <!--<action name="companies" class="com.aziflaj.companies.CompaniesAction">-->
-            <!--<result name="success">/WEB-INF/jsp/companies.jsp</result>-->
-            <!--<result name="error">/WEB-INF/jsp/error.jsp</result>-->
-        <!--</action>-->
-
-        <!--<action name="departments" class="com.aziflaj.companies.action.DepartmentsAction">-->
-            <!--<result name="success">/WEB-INF/jsp/departments.jsp</result>-->
+        <!--<action name="departments" class="com.aziflaj.companies.action.departments.DepartmentsAction">-->
+            <!--<result name="success">/WEB-INF/jsp/all.jsp</result>-->
         <!--</action>-->
 
         <!--<action name="all-sectors" class="com.aziflaj.companies.action.sector.AllSectorsAction">-->
@@ -82,7 +77,7 @@
 
         <action name="*">
             <result type="redirectAction">
-                <param name="actionName">index</param>
+                <param name="actionName">/</param>
             </result>
         </action>
     </package>

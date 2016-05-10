@@ -1,4 +1,4 @@
-package com.aziflaj.companies.action;
+package com.aziflaj.companies.action.departments;
 
 import com.aziflaj.companies.data.dao.DepartmentDao;
 import com.aziflaj.companies.data.model.Company;
@@ -8,12 +8,18 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.StrutsStatics;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
+@Namespace("/departments")
+@Action("/")
+@Result(name = "success", location = "all.jsp")
 public class DepartmentsAction extends ActionSupport implements StrutsStatics {
     private static final Logger LOGGER = LogManager.getLogger(DepartmentsAction.class);
     private List<Department> departments;
