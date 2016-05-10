@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.Action;
 public class HelloWorldActionTest extends TestCase {
     
     public void testHelloWorldAction() throws Exception {
-//        HelloWorldAction action = new HelloWorldAction();
+//        IndexAction action = new IndexAction();
 //        String result = action.execute();
 //        assertEquals(Action.SUCCESS, result);
         assertEquals(true, true);

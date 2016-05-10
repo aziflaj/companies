@@ -5,10 +5,10 @@
 
 <struts>
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="false"/>-->
+    <!--<constant name="struts.enable.SlashesInActionNames" value="true"/>-->
 
-    <package name="crud" namespace="/" extends="struts-default">
+    <package name="root" namespace="/" extends="struts-default">
         <interceptors>
             <interceptor name="auth-interceptor"
                          class="com.aziflaj.companies.auth.AuthInterceptor"/>
@@ -23,80 +23,80 @@
 
         <!--<default-action-ref name="/"/>-->
 
-        <global-results>
-            <result name="require-login" type="redirect">
-                <param name="location">/login.jsp</param>
-            </result>
-        </global-results>
+        <!--<global-results>-->
+            <!--<result name="require-login" type="redirect">-->
+                <!--<param name="location">/login.jsp</param>-->
+            <!--</result>-->
+        <!--</global-results>-->
 
-        <!--<action name="index" class="com.aziflaj.companies.action.IndexAction">-->
+        <!--<action name="index" class="com.aziflaj.companies.action.HelloWorldActionction">-->
             <!--&lt;!&ndash;<interceptor-ref name="auth-interceptor"/>&ndash;&gt;-->
             <!--&lt;!&ndash;<result>/WEB-INF/jsp/index.jsp</result>&ndash;&gt;-->
             <!--<result>/results/hello.jsp</result>-->
         <!--</action>-->
 
-        <action name="login" class="com.aziflaj.companies.auth.LoginAction">
-            <interceptor-ref name="defaultStack"/>
-            <result name="success" type="redirectAction">
-                <param name="actionName">index</param>
-            </result>
-            <result name="input">/login.jsp</result>
-        </action>
+        <!--<action name="login" class="com.aziflaj.companies.auth.LoginAction">-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+            <!--<result name="success" type="redirectAction">-->
+                <!--<param name="actionName">index</param>-->
+            <!--</result>-->
+            <!--<result name="input">/login.jsp</result>-->
+        <!--</action>-->
 
-        <action name="logout" class="com.aziflaj.companies.auth.LogoutAction">
-            <result name="success" type="redirectAction">
-                <param name="actionName">index</param>
-            </result>
-        </action>
+        <!--<action name="logout" class="com.aziflaj.companies.auth.LogoutAction">-->
+            <!--<result name="success" type="redirectAction">-->
+                <!--<param name="actionName">index</param>-->
+            <!--</result>-->
+        <!--</action>-->
 
-        <action name="companies" class="com.aziflaj.companies.CompaniesAction">
-            <result name="success">/WEB-INF/jsp/companies.jsp</result>
-            <result name="error">/WEB-INF/jsp/error.jsp</result>
-        </action>
+        <!--<action name="companies" class="com.aziflaj.companies.CompaniesAction">-->
+            <!--<result name="success">/WEB-INF/jsp/companies.jsp</result>-->
+            <!--<result name="error">/WEB-INF/jsp/error.jsp</result>-->
+        <!--</action>-->
 
-        <action name="departments" class="com.aziflaj.companies.action.DepartmentsAction">
-            <result name="success">/WEB-INF/jsp/departments.jsp</result>
-        </action>
+        <!--<action name="departments" class="com.aziflaj.companies.action.DepartmentsAction">-->
+            <!--<result name="success">/WEB-INF/jsp/departments.jsp</result>-->
+        <!--</action>-->
 
-        <action name="all-sectors" class="com.aziflaj.companies.action.sector.AllSectorsAction">
-            <result name="success">/WEB-INF/jsp/sectors/all.jsp</result>
-        </action>
+        <!--<action name="all-sectors" class="com.aziflaj.companies.action.sector.AllSectorsAction">-->
+            <!--<result name="success">/WEB-INF/jsp/sectors/all.jsp</result>-->
+        <!--</action>-->
 
-        <action name="sector-create-form" class="com.aziflaj.companies.action.sector.CreateSectorFormAction">
-            <result name="success">/WEB-INF/jsp/sectors/create.jsp</result>
-        </action>
+        <!--<action name="sector-create-form" class="com.aziflaj.companies.action.sector.CreateSectorFormAction">-->
+            <!--<result name="success">/WEB-INF/jsp/sectors/create.jsp</result>-->
+        <!--</action>-->
 
-        <action name="sector-create" class="com.aziflaj.companies.action.sector.CreateSectorAction">
-            <result name="success" type="redirectAction">
-                <param name="actionName">departments</param>
-            </result>
-            <result name="input" type="redirectAction">
-                <param name="actionName">4444</param>
-            </result>
-        </action>
+        <!--<action name="sector-create" class="com.aziflaj.companies.action.sector.CreateSectorAction">-->
+            <!--<result name="success" type="redirectAction">-->
+                <!--<param name="actionName">departments</param>-->
+            <!--</result>-->
+            <!--<result name="input" type="redirectAction">-->
+                <!--<param name="actionName">4444</param>-->
+            <!--</result>-->
+        <!--</action>-->
 
-        <action name="all-employees" class="com.aziflaj.companies.action.employee.AllEmployeesAction">
-            <result name="success">/WEB-INF/jsp/employees/all.jsp</result>
-        </action>
+        <!--<action name="all-employees" class="com.aziflaj.companies.action.employee.AllEmployeesAction">-->
+            <!--<result name="success">/WEB-INF/jsp/employees/all.jsp</result>-->
+        <!--</action>-->
 
-        <action name="create-employee-form" class="com.aziflaj.companies.action.employee.CreateEmployeeFormAction">
-            <result name="success">/WEB-INF/jsp/employees/create.jsp</result>
-        </action>
+        <!--<action name="create-employee-form" class="com.aziflaj.companies.action.employee.CreateEmployeeFormAction">-->
+            <!--<result name="success">/WEB-INF/jsp/employees/create.jsp</result>-->
+        <!--</action>-->
 
-        <action name="create-employee" class="com.aziflaj.companies.action.employee.CreateEmployeeAction">
-            <result name="success" type="redirectAction">
-                <param name="actionName">all-employees</param>
-            </result>
-            <result name="input" type="redirectAction">
-                <param name="actionName">create-employee-form</param>
-            </result>
-        </action>
+        <!--<action name="create-employee" class="com.aziflaj.companies.action.employee.CreateEmployeeAction">-->
+            <!--<result name="success" type="redirectAction">-->
+                <!--<param name="actionName">all-employees</param>-->
+            <!--</result>-->
+            <!--<result name="input" type="redirectAction">-->
+                <!--<param name="actionName">create-employee-form</param>-->
+            <!--</result>-->
+        <!--</action>-->
 
-        <action name="delete-employee" class="com.aziflaj.companies.action.employee.DeleteEmployeeAction">
-            <result name="success" type="redirectAction">
-                <param name="actionName">all-employees</param>
-            </result>
-        </action>
+        <!--<action name="delete-employee" class="com.aziflaj.companies.action.employee.DeleteEmployeeAction">-->
+            <!--<result name="success" type="redirectAction">-->
+                <!--<param name="actionName">all-employees</param>-->
+            <!--</result>-->
+        <!--</action>-->
 
 
         <!--<action name="*">-->

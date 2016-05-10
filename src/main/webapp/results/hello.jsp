@@ -4,7 +4,6 @@
     <title>Hello</title>
 </head>
 <body>
-Hello
-koqe prifti
+Hello World
 </body>
 </html>
