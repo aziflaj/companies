@@ -39,12 +39,12 @@
               listValue="name"
               name="employeeId"/>
 
-    <s:select list="sectors"
-              headerKey="-1"
-              headerValue="Select Sector"
-              listKey="id"
-              listValue="name"
-              name="sectorId"/>
+    <%--<s:select list="sectors"--%>
+              <%--headerKey="-1"--%>
+              <%--headerValue="Select Sector"--%>
+              <%--listKey="id"--%>
+              <%--listValue="name"--%>
+              <%--name="sectorId"/>--%>
 
     <s:submit class="btn btn-success" label="Create Sector"/>
 </s:form>

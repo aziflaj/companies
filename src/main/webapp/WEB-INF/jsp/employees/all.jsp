@@ -10,13 +10,13 @@ List of employees
 <ul>
     <s:iterator value="employees" var="e">
         <li>
-            <s:property value="#e.fullName"/> working as <s:property value="#e.role.name"/> on <s:property
-                value="#e.sector.name"/>
-
-            <%--<s:a action="edit-employee" class="btn btn-success">--%>
-                <%--<s:param name="employeeId" value="%{#e.id}"/>--%>
-                <%--Update--%>
-            <%--</s:a>--%>
+            <s:if test="#e.sector.name == \"sectorless\"">
+                <s:property value="#e.fullName"/> is an unassigned <s:property value="#e.role.name"/>.
+            </s:if>
+            <s:else>
+                <s:property value="#e.fullName"/> working as <s:property value="#e.role.name"/> on <s:property
+                    value="#e.sector.name"/>
+            </s:else>
 
             <s:a action="delete-employee" class="btn btn-danger">
                 <s:param name="employeeId" value="%{#e.id}"/>

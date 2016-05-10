@@ -231,7 +231,7 @@ CREATE TABLE `sectors` (
 
 LOCK TABLES `sectors` WRITE;
 /*!40000 ALTER TABLE `sectors` DISABLE KEYS */;
-INSERT INTO `sectors` VALUES (1,'Silverlight',2,2),(2,'Struts',1,1),(3,'SpringMVC',1,1),(4,'MS Office',1,3);
+INSERT INTO `sectors` VALUES (1,'Silverlight',2,2),(2,'Struts',1,1),(3,'SpringMVC',1,1),(4,'MS Office',1,3),(5,'sectorless',-1,-1);
 /*!40000 ALTER TABLE `sectors` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

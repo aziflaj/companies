@@ -28,7 +28,7 @@ public class CreateEmployeeAction extends ActionSupport {
             Role employeeRole = roleDao.getById(employeeId);
 
             SectorDao sectorDao = new SectorDao();
-            Sector sector = sectorDao.getById(sectorId);
+            Sector sector = sectorDao.getByName("sectorless");
 
             EmployeeDao employeeDao = new EmployeeDao();
             Employee employee = new Employee(-1, fullName, ssn, email, new Date(), employeeRole, sector);
@@ -71,10 +71,6 @@ public class CreateEmployeeAction extends ActionSupport {
         if (employeeId < 0) {
             addFieldError("employeeId", "The role selected was invalid");
         }
-
-        if (sectorId < 0) {
-            addFieldError("sectorId", "The sector selected was invalid");
-        }
     }
 
     public void setFullName(String fullName) {
@@ -96,10 +92,5 @@ public class CreateEmployeeAction extends ActionSupport {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setSectorId(Long sectorId) {
-        System.out.println("sector ROLE ID: " + sectorId);
-        this.sectorId = sectorId;
     }
 }

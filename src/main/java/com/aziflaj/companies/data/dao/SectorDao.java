@@ -138,4 +138,23 @@ public class SectorDao extends BaseDao<Sector> {
 
         return sectors;
     }
+
+    public Sector getByName(String sectorName) throws SQLException {
+        String query = "SELECT id, name, department_id, office_id " +
+                "FROM sectors " +
+                "WHERE name = ?;";
+
+        PreparedStatement statement = getConnection().prepareStatement(query);
+        statement.setString(1, sectorName);
+
+        ResultSet rs = statement.executeQuery();
+        if (rs.first()) {
+            return new Sector(rs.getLong("id"),
+                    sectorName,
+                    officeDao.getById(rs.getLong("office_id")),
+                    departmentDao.getById(rs.getLong("department_id")));
+        } else {
+            return null;
+        }
+    }
 }
