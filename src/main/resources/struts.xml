@@ -5,6 +5,7 @@
 
 <struts>
     <constant name="struts.devMode" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="root"/>
     <!--<constant name="struts.enable.DynamicMethodInvocation" value="false"/>-->
     <!--<constant name="struts.enable.SlashesInActionNames" value="true"/>-->
 
@@ -19,35 +20,15 @@
             </interceptor-stack>
         </interceptors>
 
-        <!--<default-interceptor-ref name="loginStack"/>-->
+        <default-interceptor-ref name="loginStack"/>
 
-        <!--<default-action-ref name="/"/>-->
+        <default-action-ref name="index"/>
 
-        <!--<global-results>-->
-            <!--<result name="require-login" type="redirect">-->
-                <!--<param name="location">/login.jsp</param>-->
-            <!--</result>-->
-        <!--</global-results>-->
-
-        <!--<action name="index" class="com.aziflaj.companies.action.HelloWorldActionction">-->
-            <!--&lt;!&ndash;<interceptor-ref name="auth-interceptor"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<result>/WEB-INF/jsp/index.jsp</result>&ndash;&gt;-->
-            <!--<result>/results/hello.jsp</result>-->
-        <!--</action>-->
-
-        <!--<action name="login" class="com.aziflaj.companies.auth.LoginAction">-->
-            <!--<interceptor-ref name="defaultStack"/>-->
-            <!--<result name="success" type="redirectAction">-->
-                <!--<param name="actionName">index</param>-->
-            <!--</result>-->
-            <!--<result name="input">/login.jsp</result>-->
-        <!--</action>-->
-
-        <!--<action name="logout" class="com.aziflaj.companies.auth.LogoutAction">-->
-            <!--<result name="success" type="redirectAction">-->
-                <!--<param name="actionName">index</param>-->
-            <!--</result>-->
-        <!--</action>-->
+        <global-results>
+            <result name="require-login" type="redirectAction">
+                <param name="actionName">login-form</param>
+            </result>
+        </global-results>
 
         <!--<action name="companies" class="com.aziflaj.companies.CompaniesAction">-->
             <!--<result name="success">/WEB-INF/jsp/companies.jsp</result>-->
@@ -99,10 +80,10 @@
         <!--</action>-->
 
 
-        <!--<action name="*">-->
-            <!--<result type="redirectAction">-->
-                <!--<param name="actionName">/</param>-->
-            <!--</result>-->
-        <!--</action>-->
+        <action name="*">
+            <result type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
+        </action>
     </package>
 </struts>

@@ -1,11 +1,15 @@
-package com.aziflaj.companies.auth;
+package com.aziflaj.companies.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+@Namespace("/")
+@Action(value = "logout")
 public class LogoutAction extends ActionSupport {
 
     @Override
@@ -19,6 +23,6 @@ public class LogoutAction extends ActionSupport {
             }
         }
         ServletActionContext.getRequest().getSession().invalidate();
-        return SUCCESS;
+        return "require-login";
     }
 }
