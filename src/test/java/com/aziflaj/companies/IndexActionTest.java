@@ -1,5 +1,6 @@
 package com.aziflaj.companies;
 
+import com.aziflaj.companies.action.IndexAction;
 import com.opensymphony.xwork2.Action;
 import junit.framework.TestCase;
 

@@ -6,10 +6,9 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-    <!--<constant name="struts.action.extension" value=""/>-->
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
 
-    <package name="crud" extends="struts-default">
+    <package name="crud" namespace="/" extends="struts-default">
         <interceptors>
             <interceptor name="auth-interceptor"
                          class="com.aziflaj.companies.auth.AuthInterceptor"/>
@@ -20,9 +19,9 @@
             </interceptor-stack>
         </interceptors>
 
-        <default-interceptor-ref name="loginStack"/>
+        <!--<default-interceptor-ref name="loginStack"/>-->
 
-        <default-action-ref name="index"/>
+        <!--<default-action-ref name="/"/>-->
 
         <global-results>
             <result name="require-login" type="redirect">
@@ -30,10 +29,11 @@
             </result>
         </global-results>
 
-        <action name="index" class="com.aziflaj.companies.IndexAction">
-            <interceptor-ref name="auth-interceptor"/>
-            <result>/WEB-INF/jsp/index.jsp</result>
-        </action>
+        <!--<action name="index" class="com.aziflaj.companies.action.IndexAction">-->
+            <!--&lt;!&ndash;<interceptor-ref name="auth-interceptor"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result>/WEB-INF/jsp/index.jsp</result>&ndash;&gt;-->
+            <!--<result>/results/hello.jsp</result>-->
+        <!--</action>-->
 
         <action name="login" class="com.aziflaj.companies.auth.LoginAction">
             <interceptor-ref name="defaultStack"/>
@@ -99,10 +99,10 @@
         </action>
 
 
-        <action name="*">
-            <result type="redirectAction">
-                <param name="actionName">index</param>
-            </result>
-        </action>
+        <!--<action name="*">-->
+            <!--<result type="redirectAction">-->
+                <!--<param name="actionName">/</param>-->
+            <!--</result>-->
+        <!--</action>-->
     </package>
 </struts>
