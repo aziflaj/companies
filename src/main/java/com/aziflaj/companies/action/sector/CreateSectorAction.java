@@ -7,7 +7,6 @@ import com.aziflaj.companies.data.dao.SectorDao;
 import com.aziflaj.companies.data.model.Employee;
 import com.aziflaj.companies.data.model.Sector;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.StrutsStatics;
 
@@ -17,6 +16,7 @@ public class CreateSectorAction extends ActionSupport implements StrutsStatics {
     private String sectorName;
     private long managerId;
     private long departmentId;
+    private long[] employeeIds;
 
     @Override
     public String execute() {
@@ -35,7 +35,15 @@ public class CreateSectorAction extends ActionSupport implements StrutsStatics {
 
             Employee manager = employeeDao.getById(managerId);
             manager.setSector(sector);
-            if (employeeDao.update(manager)) System.out.println("updated manager");
+            if (employeeDao.update(manager)) {
+                System.out.println("updated manager");
+            }
+
+            for (long id : employeeIds) {
+                Employee employee = employeeDao.getById(id);
+                employee.setSector(sector);
+                employeeDao.update(employee);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return ERROR;
@@ -56,8 +64,8 @@ public class CreateSectorAction extends ActionSupport implements StrutsStatics {
             System.out.println("Mos harro emrin e sektorit");
         }
 
-        if (departmentId != 0) {
-            System.out.println("department: " + departmentId);
+        if (employeeIds.length < 4) {
+            addFieldError("employeeIds", "Te pakten 4 punonjes");
         }
     }
 
@@ -71,5 +79,9 @@ public class CreateSectorAction extends ActionSupport implements StrutsStatics {
 
     public void setDepartmentId(long departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public void setEmployeeIds(long[] employeeIds) {
+        this.employeeIds = employeeIds;
     }
 }

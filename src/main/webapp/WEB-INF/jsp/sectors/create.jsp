@@ -24,6 +24,13 @@
                   listValue="fullName"
                   name="managerId"/>
 
+        <h3>Employees</h3>
+        <s:select list="employees"
+                  listKey="id"
+                  listValue="fullName"
+                  name="employeeIds"
+                  multiple="true"/>
+
         <s:submit class="btn btn-success" label="Create Sector"/>
 
     </s:form>

@@ -5,7 +5,7 @@
 --
 -- Host: localhost    Database: companies_db
 -- ------------------------------------------------------
--- Server version	5.5.49-0ubuntu0.14.04.1
+-- Server version       5.5.49-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -56,7 +56,7 @@ CREATE TABLE `companies` (
 
 LOCK TABLES `companies` WRITE;
 /*!40000 ALTER TABLE `companies` DISABLE KEYS */;
-INSERT INTO `companies` VALUES (4,'A12345678B','IkubINFO','Rr. \"Abdyl Frasheri\", EGT-Tower, P. 11/1, Kati 2, Tiranë, Shqipëri.','hr@ikubinfo.al','NwYJKgl7e8cvZAO2HlqbMjAq1QCIz142bhKbSOobzua3S5xdb4ibU7zQ53uEo3FFGfQ=$nSlJBJBUM9YqbQhzCwajvVzsvdByc1yFcSXAy9Ufn3c=','M7FKvRFuTJ/QK2GptlkP1EXGcY3weZYqt2y82EsCetR4ZfmI9rY3J9I3R2Dhlv4rvMI=$6ph9TGBVzb6DgptlYlmsLdesb3Hqo1QABiZF/G9zIuA='),(5,'V78945612K','Microsoft','Rr. \"Abdyl Frasheri\", EGT Tower, Kati 2, Tirane','login@microsoft.com','NwYJKgl7e8cvZAO2HlqbMjAq1QCIz142bhKbSOobzua3S5xdb4ibU7zQ53uEo3FFGfQ=$nSlJBJBUM9YqbQhzCwajvVzsvdByc1yFcSXAy9Ufn3c=',NULL);
+INSERT INTO `companies` VALUES (4,'A12345678B','IkubINFO','Rr. \"Abdyl Frasheri\", EGT-Tower, P. 11/1, Kati 2, Tiranë, Shqipëri.','hr@ikubinfo.al','NwYJKgl7e8cvZAO2HlqbMjAq1QCIz142bhKbSOobzua3S5xdb4ibU7zQ53uEo3FFGfQ=$nSlJBJBUM9YqbQhzCwajvVzsvdByc1yFcSXAy9Ufn3c=','70VBwvS4anzxjlpcUKgsUm1GzjTUl3x2t4EnoIYkFNfyZ2rLhOEqhFCD5k8uekTfkFs=$OZr1QGa/ePB/+EAsby5KiT36pTiIZgvZjAs8z9wxFoU='),(5,'V78945612K','Microsoft','Rr. \"Abdyl Frasheri\", EGT Tower, Kati 2, Tirane','login@microsoft.com','NwYJKgl7e8cvZAO2HlqbMjAq1QCIz142bhKbSOobzua3S5xdb4ibU7zQ53uEo3FFGfQ=$nSlJBJBUM9YqbQhzCwajvVzsvdByc1yFcSXAy9Ufn3c=',NULL);
 /*!40000 ALTER TABLE `companies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `employees` (
   KEY `sector_id` (`sector_id`),
   CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
   CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`sector_id`) REFERENCES `sectors` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +119,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES (1,'Bledi Mane','AAA-12-1234','bledimane@email.com','2016-05-10',3,5),(2,'Qazim Mulleti','AAA-13-1235','qazim@mail.com','2016-05-11',3,5),(3,'Behgjet Pacolli','AAA-12-1236','behgjet.bossi@pacolli.com','2016-05-11',1,5),(4,'Shpetim Idrizi','AAA-12-1238','shpetim@mail.com','2016-05-11',1,5),(5,'Emri Plot','abc-55-7777','erigersmamoci@gmail.com','2016-05-11',1,5),(6,'Name more','abd-84-9852','na@memore.com','2016-05-11',1,5),(7,'James Bond','abc-55-7777','jamesbond@email.com','2016-05-11',1,5);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +223,7 @@ CREATE TABLE `sectors` (
   KEY `department_id` (`department_id`),
   CONSTRAINT `sectors_ibfk_1` FOREIGN KEY (`office_id`) REFERENCES `offices` (`id`) ON DELETE CASCADE,
   CONSTRAINT `sectors_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-04 15:58:46
+-- Dump completed on 2016-05-11  9:33:16
