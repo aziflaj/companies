@@ -6,7 +6,6 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-    <!--<constant name="struts.action.extension" value=""/>-->
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
 
     <package name="crud" extends="struts-default">
@@ -71,6 +70,12 @@
                 <param name="actionName">departments</param>
             </result>
             <result name="input">/WEB-INF/jsp/sectors/create.jsp</result>
+        </action>
+
+        <action name="delete-sector" class="com.aziflaj.companies.action.sector.DeleteSectorAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">departments</param>
+            </result>
         </action>
 
         <action name="all-employees" class="com.aziflaj.companies.action.employee.AllEmployeesAction">

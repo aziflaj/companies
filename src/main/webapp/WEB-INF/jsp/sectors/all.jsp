@@ -12,7 +12,13 @@
 
 <ul>
     <s:iterator value="sectors" var="s">
-        <li><s:property value="#s.name"/></li>
+        <li>
+            <s:property value="#s.name"/>
+            <s:a action="delete-sector" class="btn btn-danger">
+                <s:param name="sectorId" value="%{#s.id}"/>
+                Delete
+            </s:a>
+        </li>
     </s:iterator>
 </ul>
 </body>
