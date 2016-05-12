@@ -8,12 +8,18 @@ import com.aziflaj.companies.data.model.Sector;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsStatics;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
+@Namespace("/sectors")
+@Action("all")
+@Result(name = "success", location = "all.jsp")
 public class AllSectorsAction extends ActionSupport implements StrutsStatics {
     private Long departmentId;
     private List<Sector> sectors;

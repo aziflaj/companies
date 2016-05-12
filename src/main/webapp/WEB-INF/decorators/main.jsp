@@ -36,7 +36,7 @@
         <s:if test="#session.login">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><s:a namespace="departments" action="/">Departments</s:a></li>
+                    <li><s:a namespace="departments" action="all">Departments</s:a></li>
                     <li><s:a action="all-employees">Employees</s:a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

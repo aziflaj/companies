@@ -6,7 +6,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 
 @Namespace("/")
-@Action(value = "/")
+@Action(value = "company")
 @Result(location = "/WEB-INF/jsp/index.jsp")
 public class IndexAction extends ActionSupport {
 }

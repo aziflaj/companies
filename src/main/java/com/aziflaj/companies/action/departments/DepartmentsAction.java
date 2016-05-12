@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Namespace("/departments")
-@Action("/")
+@Action("all")
 @Result(name = "success", location = "all.jsp")
 public class DepartmentsAction extends ActionSupport implements StrutsStatics {
     private static final Logger LOGGER = LogManager.getLogger(DepartmentsAction.class);
