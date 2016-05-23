@@ -95,6 +95,17 @@
             </result>
         </action>
 
+        <action name="update-employee-form" class="com.aziflaj.companies.action.employee.UpdateEmployeeFormAction">
+            <result name="success">/WEB-INF/jsp/employees/update.jsp</result>
+        </action>
+
+        <action name="update-employee" class="com.aziflaj.companies.action.employee.UpdateEmployeeAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">all-employees</param>
+            </result>
+            <result name="input">/WEB-INF/jsp/employees/update.jsp</result>
+        </action>
+
         <action name="delete-employee" class="com.aziflaj.companies.action.employee.DeleteEmployeeAction">
             <result name="success" type="redirectAction">
                 <param name="actionName">all-employees</param>

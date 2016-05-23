@@ -13,8 +13,13 @@ List of employees
         <li style="padding: 0.5em 0">
             <s:property value="#u.fullName"/> is an unassigned <s:property value="#u.role.name"/>.
 
-            <s:a action="delete-employee" class="btn btn-danger">
-                <s:param name="employeeId" value="%{#e.id}"/>
+            <s:a action="update-employee-form" class="btn btn-xs btn-primary">
+                <s:param name="employeeId" value="%{#u.id}"/>
+                Edit
+            </s:a>
+
+            <s:a action="delete-employee" class="btn btn-xs btn-danger">
+                <s:param name="employeeId" value="%{#u.id}"/>
                 Delete
             </s:a>
         </li>
@@ -33,7 +38,12 @@ List of employees
                     value="#e.sector.name"/>
             </s:else>
 
-            <s:a action="delete-employee" class="btn btn-danger">
+            <s:a action="update-employee-form" class="btn btn-xs btn-primary">
+                <s:param name="employeeId" value="%{#e.id}"/>
+                Edit
+            </s:a>
+
+            <s:a action="delete-employee" class="btn btn-xs btn-danger">
                 <s:param name="employeeId" value="%{#e.id}"/>
                 Delete
             </s:a>
